@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "Building for Windows/win32/MinGW..."
+echo ""
+
+if [ -f /mingw/lib/pkgconfig/fontconfig.pc ]; then
+    echo "fontconfig.pc file exists..."
+else
+    echo "fontconfig.pc does not exist, copying..."
+    cp ./scripts/fontconfig.pc /mingw/lib/pkgconfig
+fi
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/mingw/lib/pkgconfig:${PKG_CONFIG_PATH}
+cd make && ./configure --with-layout=gnustep --prefix=/GNUstep && make install
+cd ../base && CFLAGS+=-I/usr/local/include LDFLAGS+=-L/usr/local/lib ./configure --with-installation-domain=SYSTEM && make GNUSTEP_INSTALLATION_DOMAIN=SYSTEM debug=yes install
+cd ../gui && ./configure && make GNUSTEP_INSTALLATION_DOMAIN=SYSTEM debug=yes install
+cd ../back && ./configure --enable-graphics=cairo && make GNUSTEP_INSTALLATION_DOMAIN=SYSTEM debug=yes install
+
+echo ""
+echo "Done."
+
+exit 0

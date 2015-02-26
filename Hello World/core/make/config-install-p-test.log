@@ -1,0 +1,13 @@
+** Environment
+ INSTALL: /usr/bin/install -c
+
+ current directory: /home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-install-p-test
+ log file: /home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-install-p-test.log
+
+
+** Run /usr/bin/install -c -p
+/usr/bin/install -c -p config-install-p-test-file "/home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-install-p-test-file2"
+No error reported by /usr/bin/install -c
+
+** Checking that the installed file exists
+Success

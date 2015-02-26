@@ -1,0 +1,21 @@
+** Environment
+ CC: gcc
+ CFLAGS: -g -O2 -x objective-c -I.   -fgnu-runtime -DGNU_RUNTIME
+ CPPFLAGS: 
+ LDFLAGS:  -shared-libgcc
+ LIBS: -lobjc
+
+ current directory: /home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test
+ log file: /home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test.log
+
+ CFLAGS without -x objective-c: -g -O2  -I. -fgnu-runtime -DGNU_RUNTIME
+
+** Compile the file without precompiled headers
+gcc -o "/home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test.out" -g -O2  -I. -fgnu-runtime -DGNU_RUNTIME   -shared-libgcc -lobjc config-precomp-test.m
+/tmp/ccMJXNk5.o: In function `main':
+/home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test/config-precomp-test.m:12: undefined reference to `objc_get_class'
+/home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test/config-precomp-test.m:12: undefined reference to `objc_msg_lookup'
+/tmp/ccMJXNk5.o: In function `__objc_gnu_init':
+/home/silviu/Codding/Objective-C(learning)/Hello World/core/make/config-precomp-test/config-precomp-test.m:12: undefined reference to `__objc_exec_class'
+collect2: error: ld returned 1 exit status
+Failure
